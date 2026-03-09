@@ -1,5 +1,6 @@
 import cors from "cors";
 import dotenv from "dotenv";
+import type { NextFunction, Request, Response } from "express";
 import express from "express";
 
 dotenv.config();
@@ -22,7 +23,7 @@ app.use((_req, res) => {
 });
 
 // Global error handler
-app.use((err, _req, res, _next) => {
+app.use((err: Error, _req: Request, res: Response, _next: NextFunction) => {
   console.error("Unhandled error:", err);
   res.status(500).json({ error: "Internal server error" });
 });

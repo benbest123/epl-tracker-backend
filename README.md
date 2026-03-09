@@ -1,6 +1,6 @@
 # ⚽ EPL Tracker — Backend
 
-A Node.js/Express backend service that syncs Premier League data from the Football API into a hosted PostgreSQL database and exposes a REST API for the frontend.
+A Node.js/Express/Typescript backend service that syncs Premier League data from the Football API into a hosted PostgreSQL database and exposes a REST API for the frontend.
 
 ## Stack
 
