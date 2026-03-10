@@ -7,7 +7,8 @@
   "scripts": {
     "dev": "node --watch --loader ts-node/esm src/index.ts",
     "build": "tsc",
-    "test": "echo \"No tests yet\" && exit 0"
+    "test": "echo \"No tests yet\" && exit 0",
+    "migrate": "node --loader ts-node/esm src/db/migrate.ts"
   },
   "dependencies": {
     "axios": "^1.7.2",
