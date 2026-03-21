@@ -5,15 +5,27 @@
   "main": "src/index.js",
   "type": "module",
   "scripts": {
-    "dev": "node --watch src/index.js",
-    "start": "node src/index.js",
-    "test": "echo \"No tests yet\" && exit 0"
+    "dev": "node --watch --loader ts-node/esm src/index.ts",
+    "build": "tsc",
+    "test": "echo \"No tests yet\" && exit 0",
+    "migrate": "node --loader ts-node/esm src/db/migrate.ts",
+    "sync:teams": "node --loader ts-node/esm src/jobs/syncTeams.ts",
+    "sync:players": "node --loader ts-node/esm src/jobs/syncPlayers.ts",
+    "sync:fixtures": "node --loader ts-node/esm src/jobs/syncFixtures.ts"
   },
   "dependencies": {
     "axios": "^1.7.2",
     "cors": "^2.8.5",
     "dotenv": "^16.4.5",
-    "express": "^4.19.2"
+    "express": "^4.19.2",
+    "pg": "^8.20.0"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "@types/cors": "^2.8.19",
+    "@types/express": "^5.0.6",
+    "@types/node": "^25.4.0",
+    "@types/pg": "^8.18.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.3"
+  }
 }

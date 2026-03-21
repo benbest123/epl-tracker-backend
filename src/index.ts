@@ -1,6 +1,9 @@
 import cors from "cors";
 import dotenv from "dotenv";
+import type { NextFunction, Request, Response } from "express";
 import express from "express";
+import matchesRouter from "./routes/matches.js";
+import teamsRouter from "./routes/teams.js";
 
 dotenv.config();
 
@@ -16,13 +19,16 @@ app.get("/health", (_req, res) => {
   res.json({ status: "ok", timestamp: new Date().toISOString() });
 });
 
+app.use("/api/teams", teamsRouter);
+app.use("/api/matches", matchesRouter);
+
 // 404 handler
 app.use((_req, res) => {
   res.status(404).json({ error: "Route not found" });
 });
 
 // Global error handler
-app.use((err, _req, res, _next) => {
+app.use((err: Error, _req: Request, res: Response, _next: NextFunction) => {
   console.error("Unhandled error:", err);
   res.status(500).json({ error: "Internal server error" });
 });
