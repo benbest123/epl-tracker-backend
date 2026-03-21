@@ -2,6 +2,8 @@ import cors from "cors";
 import dotenv from "dotenv";
 import type { NextFunction, Request, Response } from "express";
 import express from "express";
+import matchesRouter from "./routes/matches.js";
+import teamsRouter from "./routes/teams.js";
 
 dotenv.config();
 
@@ -16,6 +18,9 @@ app.use(express.json());
 app.get("/health", (_req, res) => {
   res.json({ status: "ok", timestamp: new Date().toISOString() });
 });
+
+app.use("/api/teams", teamsRouter);
+app.use("/api/matches", matchesRouter);
 
 // 404 handler
 app.use((_req, res) => {

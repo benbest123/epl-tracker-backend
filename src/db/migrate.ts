@@ -41,7 +41,7 @@ const migrate = async () => {
     CREATE TABLE IF NOT EXISTS matches (
       id                INTEGER PRIMARY KEY,
       season            INTEGER NOT NULL,
-      round             VARCHAR(50),
+      round             INTEGER,
       match_date        TIMESTAMPTZ,
       status            VARCHAR(10),
       elapsed           INTEGER,

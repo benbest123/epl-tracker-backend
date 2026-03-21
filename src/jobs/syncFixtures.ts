@@ -37,7 +37,27 @@ export const syncFixtures = async () => {
         home_goals_pen = EXCLUDED.home_goals_pen,
         away_goals_pen = EXCLUDED.away_goals_pen,
         updated_at    = NOW()`,
-      [fixture.id, league.season, league.round, fixture.date, fixture.status.short, fixture.status.elapsed ?? null, fixture.referee?.split(",")[0] ?? null, fixture.venue?.name ?? null, fixture.venue?.city ?? null, teams.home.id, teams.away.id, goals.home ?? null, goals.away ?? null, score.halftime.home ?? null, score.halftime.away ?? null, score.extratime.home ?? null, score.extratime.away ?? null, score.penalty.home ?? null, score.penalty.away ?? null],
+      [
+        fixture.id,
+        league.season,
+        league.round ? parseInt(league.round.split(" - ")[1]) : null,
+        fixture.date,
+        fixture.status.short,
+        fixture.status.elapsed ?? null,
+        fixture.referee?.split(",")[0] ?? null,
+        fixture.venue?.name ?? null,
+        fixture.venue?.city ?? null,
+        teams.home.id,
+        teams.away.id,
+        goals.home ?? null,
+        goals.away ?? null,
+        score.halftime.home ?? null,
+        score.halftime.away ?? null,
+        score.extratime.home ?? null,
+        score.extratime.away ?? null,
+        score.penalty.home ?? null,
+        score.penalty.away ?? null,
+      ],
     );
     upserted++;
   }
